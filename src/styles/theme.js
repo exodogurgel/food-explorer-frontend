@@ -13,6 +13,7 @@ export default {
     GRAY_100: "#E1E1E6", // subtitle
 
     RED: "#92000E",   
-    LIGHT_GREEN: "#82F3FF"
+    LIGHT_GREEN: "#82F3FF",
+    LIGHT_BLUE:"#065E7C"
   }
-}    
+}

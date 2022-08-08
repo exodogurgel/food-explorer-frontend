@@ -1,6 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
+  :root {
+    font-size: 62.5%;
+  }
+
   * {
     margin: 0;
     padding: 0;
@@ -13,6 +17,8 @@ export default createGlobalStyle`
 
     font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
+
+    font-size: 1.6rem;
   }
 
   a {
@@ -26,5 +32,10 @@ export default createGlobalStyle`
 
   button:hover, a:hover {
     filter: brightness(0.9);
+  }
+
+  legend, button, a {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
   }
 `
