@@ -14,8 +14,22 @@ export function SignIn() {
 
       <Form>
         <legend>Faça login</legend>   
-        <Input type="email" label="email" title="Email" placeholder="Exemplo: exemplo@exemplo.com"/>
-        <Input type="password" label="password" title="Senha" placeholder="No mínimo 6 caracteres"/>
+        <Input 
+          type="email" 
+          label="email" 
+          title="Email" 
+          placeholder="Exemplo: exemplo@exemplo.com"
+          required
+        />
+
+        <Input 
+          type="password" 
+          label="password" 
+          title="Senha" 
+          placeholder="No mínimo 6 caracteres"
+          minlength="6"
+          required 
+        />
 
         <Button title="Entrar"/>
 
