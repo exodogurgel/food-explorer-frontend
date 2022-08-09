@@ -19,6 +19,8 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased;
 
     font-size: 1.6rem;
+
+    overflow: ${({ isVisible }) => isVisible ? 'auto' : 'hidden'};
   }
 
   a {
