@@ -1,4 +1,4 @@
-import { Container, Logo, Nav, Favorites, Search, Button, Logout } from './styles';
+import { Container, Content, Logo, Nav, Favorites, Search, Button, Logout } from './styles';
 import { FiSearch, FiLogOut, FiMenu, FiX } from 'react-icons/fi';
 import { useState } from 'react';
 
@@ -11,38 +11,40 @@ export function Header() {
 
   return (
     <Container>
-      <Logo>
-        <img src={logo} alt="polígono azul" />
-        <strong>food explorer</strong>
-      </Logo>
-         
-      <Nav isVisible={menuIsVisible}>
-        <Favorites href="#">Meus favoritos</Favorites>
+      <Content>
+        <Logo>
+          <img src={logo} alt="polígono azul" />
+          <strong>food explorer</strong>
+        </Logo>
+          
+        <Nav isVisible={menuIsVisible}>
+          <Favorites href="#">Meus favoritos</Favorites>
 
-        <Search>
-        {<FiSearch size={20}/>}
-        <input 
-          type="text"
-          placeholder="Busque pelas opções de pratos"  
-        />
-        </Search>
+          <Search>
+          {<FiSearch size={20}/>}
+          <input 
+            type="text"
+            placeholder="Busque pelas opções de pratos"  
+          />
+          </Search>
 
-        <Button href="#">
-        <img src={receipt} alt="receipt" />
-        Meu pedido <span>(0)</span>
-        </Button>
+          <Button href="#">
+          <img src={receipt} alt="receipt" />
+          Meu pedido <span>(0)</span>
+          </Button>
 
-        <Logout href="#">
-        <FiLogOut />
-        </Logout>
-      </Nav>
+          <Logout href="#">
+          <FiLogOut />
+          </Logout>
+        </Nav>
 
-      <button
-        type='button'
-        onClick={() => setMenuIsVisible(!menuIsVisible)}
-      >
-        {menuIsVisible ? <FiX /> : <FiMenu />}
-      </button>
+        <button
+          type='button'
+          onClick={() => setMenuIsVisible(!menuIsVisible)}
+        >
+          {menuIsVisible ? <FiX /> : <FiMenu />}
+        </button>
+      </Content>
     </Container>
   )
 }

@@ -3,10 +3,15 @@ import styled from "styled-components";
 export const Container = styled.header`
   width: 100%;
   height: 10.4rem;
-  padding-inline: 4rem;
 
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
+`
 
+export const Content = styled.div`
+  max-width: 136.8rem;
+  height: 10.4rem;
+  margin-inline: auto;
+  padding-inline: 4rem;
   display: flex;
   align-items: center;
   justify-content: space-between;

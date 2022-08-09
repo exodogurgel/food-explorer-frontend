@@ -20,7 +20,6 @@ export default createGlobalStyle`
 
     font-size: 1.6rem;
 
-    overflow: ${({ isVisible }) => isVisible ? 'auto' : 'hidden'};
   }
 
   a {
