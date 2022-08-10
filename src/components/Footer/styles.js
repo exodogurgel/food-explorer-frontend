@@ -25,12 +25,12 @@ export const Content = styled.div`
     gap: 1.1rem;
 
     img {
-      opacity: .4;
+      opacity: .3;
     }
 
     span {
       font-size: 2.4rem;
-      opacity: .4;
+      opacity: .3;
     }
   }
 
