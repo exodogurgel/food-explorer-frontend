@@ -3,6 +3,7 @@ import { Header } from '../../components/Header';
 import { Section } from '../../components/Section';
 import coverPhoto from '../../assets/cover-photo.png';
 import { Card } from '../../components/Card';
+import { Footer } from '../../components/Footer';
 
 import plate1 from '../../assets/plate-1.png';
 
@@ -119,6 +120,7 @@ export function Home() {
             }}/>
           </Section>
         </Content>
+        <Footer />
 
       </Container>
   )
