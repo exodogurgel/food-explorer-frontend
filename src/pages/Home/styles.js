@@ -4,10 +4,20 @@ export const Container = styled.div`
   width: 100%;
   margin-inline: auto;
 `
+export const Content = styled.div`
+  max-width: 136.8rem;
+  
+  @media (min-width: 768px) {
+    padding-inline: 12.3rem;
+    margin-inline: auto;
+  }
+`
 
 export const Slogan = styled.div`
   margin-top: 3rem;
+  margin-inline: auto;
   padding-inline: 4rem;
+  margin-bottom: 4.8rem;
 
   > img {
     width: 100%;
@@ -28,8 +38,7 @@ export const Slogan = styled.div`
      }
   }
 
-  @media (min-width: 768px) {
-    padding-inline: 12.3rem;
+  @media (min-width: 1224px) {
     height: 26rem;
     margin-top: 16.4rem;
     border-radius: 0.8rem;
@@ -42,14 +51,14 @@ export const Slogan = styled.div`
     position: relative;
 
     > img {
-      max-width: 63.2rem;
+      width: max(63.2rem);
       position: absolute;
       bottom: 0;
       left: -5rem;
     }
 
     > div {
-      justify-self: flex-end;
+      margin-top: 0;
     }
   }
 `
