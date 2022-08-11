@@ -46,7 +46,7 @@ export function Details() {
             <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim.</p>
             <Ingredients>
               {
-                ["alface", "tomate", "rabanete", "pão naan"].map(ingredient => (
+                ["Alface", "tomate", "rabanete", "pão naan"].map(ingredient => (
                   <Ingredient key={ingredient} ingredient={ingredient} />
                 ))
               }
@@ -64,7 +64,9 @@ export function Details() {
                 onClick={handleAddQuantity}
                 className="btn"><FiPlus size={25}/>
               </button>
-              <Button title="incluir"/>
+              <div>
+                <Button title="incluir"/>
+              </div>
             </Info>
           </div>
         </Main>

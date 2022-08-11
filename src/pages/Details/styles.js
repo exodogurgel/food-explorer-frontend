@@ -83,6 +83,10 @@ export const Main = styled.main`
       font-size: 2.4rem;
       color: ${({ theme }) => theme.COLORS.GRAY_200};
     }
+
+    div:nth-child(5) {
+      width: 10rem;
+    }
   }
 
   @media (min-width: 768px) {

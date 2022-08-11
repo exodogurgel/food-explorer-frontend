@@ -27,8 +27,11 @@ import apple from '../../assets/maca.png';
 
 export function Ingredient({ingredient}) {
 
-function fetchImageIngredient(ingredient) {
+function fetchImageIngredient(name) {
+  let ingredient = name.toLowerCase().trim()
+  
   let result;
+  
   if (ingredient == "alface") {
     return result = lettuce
   } else if (ingredient == "tomate") {
