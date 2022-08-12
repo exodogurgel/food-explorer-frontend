@@ -1,13 +1,14 @@
 import { Container, TextareaInput } from './styles'
 
-export function Textarea({label, value, ...rest }) {
+export function Textarea({label, title, value, ...rest }) {
   return (
     <Container>
       <label htmlFor={label}>
-        <Textarea {...rest}>
-          {value}
-        </Textarea>
+        {title}
       </label>
+      <TextareaInput id={label} {...rest}>
+        {value}
+      </TextareaInput>
     </Container>
   )
 }

@@ -9,7 +9,7 @@
  `
 
  export const Content = styled.main`
- width: 100%;flex: 1;
+  width: 100%;flex: 1;
   max-width: 136.8rem;
   height: 100%;
   padding-inline: 4rem;
@@ -44,6 +44,9 @@
 `
 
 export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+
   > header {
     legend {
       font-size: 3.2rem;
@@ -80,16 +83,36 @@ export const Form = styled.form`
     }
   }
 
+  > button {
+    margin-top: 2.4rem;
+    height: 4.8rem;
+    width: 100%;
+    background: #1A2327;
+    border: 1px solid ${({ theme }) => theme.COLORS.WHITE};
+    border-radius: 0.5rem;
+    color: ${({ theme }) => theme.COLORS.WHITE};
+
+    align-self: flex-end;
+
+    @media (min-width: 768px) {
+      width: 35.7rem;
+    }
+
+  }
+
 `
 
 export const InputWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  column-gap: 3.2rem;
+  
   margin-bottom: 4rem;
+
+  gap: 4rem;
 
   @media (min-width: 768px) {
     flex-wrap: nowrap;
+    column-gap: 3.2rem;
   }
 `
 
@@ -101,6 +124,8 @@ export const SectionIngredients = styled.div`
   gap: 0.8rem;
   color: ${({ theme }) => theme.COLORS.GRAY_200};
 
+  margin-bottom: 4rem;
+
   > div {
     display: flex;
     gap: 2rem;
@@ -109,5 +134,9 @@ export const SectionIngredients = styled.div`
 
     border: 1px solid ${({ theme }) => theme.COLORS.WHITE};
     border-radius: 0.5rem;
+  }
+
+  @media (min-width: 768px) {
+    margin-bottom: 0;
   }
 `

@@ -3,9 +3,8 @@ import { Header } from "../../components/Header";
 import { Input } from "../../components/Input";
 import { Textarea } from "../../components/Textarea";
 import { Container, Content, ButtonBack, Form, SectionIngredients, InputWrapper } from "./styles";
-import { FiChevronLeft } from 'react-icons/fi';
+import { FiChevronLeft, FiUpload } from 'react-icons/fi';
 import { IngredientItem } from "../../components/IngredientItem";
-import { AiOutlineUpload } from 'react-icons/ai';
 
 export function New() {
   return (
@@ -26,7 +25,7 @@ export function New() {
               <label id="file" htmlFor="image">
                 Imagem do prato
                 <div>
-                  <AiOutlineUpload size={30}/>
+                  <FiUpload size={24}/>
                   <span>Selecione a imagem</span>
                   <input id="image" type="file"/>
                 </div>
@@ -47,7 +46,12 @@ export function New() {
               <Input label="price" title="Preço" type="text" placeholder="R$ 00,00"/>
             </div>
           </InputWrapper>
-          <Textarea label="Descrição" />
+          <Textarea label="Description" title="Descrição" placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"/>
+          <button
+            type="button"
+          >
+            Adicionar pedido
+          </button>
         </Form>
         
       </Content>
