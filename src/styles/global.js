@@ -11,6 +11,21 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
+  body, body * {
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: ${({ theme }) => theme.COLORS.GRAY_200};
+      border-radius: 8px;
+    }
+  }
+
   body {
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
     color: ${({ theme }) => theme.COLORS.WHITE};
@@ -19,7 +34,6 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased;
 
     font-size: 1.6rem;
-
   }
 
   a {
