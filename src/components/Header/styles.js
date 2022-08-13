@@ -49,6 +49,7 @@ export const Nav = styled.div`
   right: 0;
   bottom: 0;
   z-index: 5;
+  height: 40rem;
 
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
   padding-inline: 4rem;
@@ -56,7 +57,7 @@ export const Nav = styled.div`
 
   opacity: ${({ isVisible }) => isVisible ? 1 : 0};
   visibility: ${({ isVisible }) => isVisible ? 'visible' : 'hidden'};
-  transform: ${({ isVisible }) => isVisible ? 'translateY(0)' :'translateY(100%)'};
+  transform: ${({ isVisible }) => isVisible ? 'translateY(0)' :'translateY(-20%)'};
 
   display: flex;
   flex: 1;
