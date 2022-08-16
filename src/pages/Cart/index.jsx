@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Container, Content, Payment, SectionCredit } from './styles';
+import { Container, Content, Payment, SectionCredit, Accept } from './styles';
+import { FaRegCheckCircle } from 'react-icons/fa'
 
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
@@ -15,6 +16,7 @@ import imageQrCode from '../../assets/qr-code.png';
 
 export function Cart() {
   const [isPix, setIsPix] = useState(true);
+  const [paymentAccept, setPaymentAccept] = useState(false);
 
   function handlePaymentPix() {
     setIsPix(true);
@@ -22,6 +24,10 @@ export function Cart() {
 
   function handlePaymentCreditCard() {
     setIsPix(false);
+  }
+
+  function handleFinishPayment() {
+    setPaymentAccept(true);
   }
 
   return (
@@ -88,32 +94,49 @@ export function Cart() {
             <div className='option-payment'>
               {
                 isPix ? 
-                <img src={imageQrCode} alt="qr code" />
-                :
-                <SectionCredit>
-                  <Input 
-                    type="number"
-                    title="Número do Cartão"
-                    label="card-number"
-                    placeholder="0000 0000 0000 0000"
-                  />
-                  <div className='data-card'>
-                    <Input 
-                      type="data"
-                      title="Validade"
-                      label="validated"
-                      placeholder="04/25"
-                    />
-                    <Input 
-                      type="number"
-                      title="CVC"
-                      label="cvc"
-                      placeholder="000"
-                    />
-                  </div>
-                </SectionCredit>
+                  paymentAccept ? 
+                  <Accept>
+                    <FaRegCheckCircle />
+                    <p>Pagamento aprovado! </p>
+                  </Accept>
+                  :
+                  <img src={imageQrCode} alt="qr code" />
+                  :
+                    paymentAccept ?
+                    <Accept>
+                      <FaRegCheckCircle />
+                      <p>Pagamento aprovado! </p>
+                    </Accept>
+                    :
+                    <SectionCredit>
+                      <Input 
+                        type="number"
+                        title="Número do Cartão"
+                        label="card-number"
+                        placeholder="0000 0000 0000 0000"
+                      />
+                      <div className='data-card'>
+                        <Input 
+                          type="data"
+                          title="Validade"
+                          label="validated"
+                          placeholder="04/25"
+                        />
+                        <Input 
+                          type="number"
+                          title="CVC"
+                          label="cvc"
+                          placeholder="000"
+                        />
+                      </div>
+                    </SectionCredit>
               }
-              <Button image={receipt} title="Finalizar pagamento"/>
+              <Button
+                image={receipt} 
+                title="Finalizar pagamento"
+                onClick={handleFinishPayment}
+                isInvisible={paymentAccept}
+              />
             </div>
           </div>
         </Payment>

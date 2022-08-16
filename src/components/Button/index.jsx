@@ -1,9 +1,10 @@
 import { Container } from './styles';
 
-export function Button({title, image, ...rest}) {
+export function Button({title, image, isInvisible = false, ...rest}) {
   return (
     <Container
       type="button"
+      isInvisible={isInvisible}
       {...rest}
     >
       {

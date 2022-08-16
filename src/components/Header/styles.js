@@ -71,6 +71,8 @@ export const Nav = styled.div`
     position: relative;
     top: 0;
     padding: 0;
+    height: 0;
+
     margin-left: 3.2rem;
 
     flex-direction: row;
