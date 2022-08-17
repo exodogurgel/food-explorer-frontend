@@ -2,6 +2,7 @@ import { Container, Content, Logo, Nav, Favorites, Search, Button, Logout } from
 import { FiSearch, FiLogOut, FiMenu, FiX } from 'react-icons/fi';
 import { useState } from 'react';
 
+
 import logo from '../../assets/logo.svg';
 import receipt from '../../assets/receipt.svg';
 
@@ -12,7 +13,7 @@ export function Header() {
   return (
     <Container>
       <Content>
-        <Logo>
+        <Logo to="/">
           <img src={logo} alt="polígono azul" />
           <strong>food explorer</strong>
         </Logo>
@@ -28,7 +29,7 @@ export function Header() {
           />
           </Search>
 
-          <Button href="#">
+          <Button to="/cart">
           <img src={receipt} alt="receipt" />
           Meu pedido <span>(0)</span>
           </Button>
