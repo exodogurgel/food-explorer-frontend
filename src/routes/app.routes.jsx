@@ -14,7 +14,7 @@ export function AppRoutes() {
       <Route path="/details/:id" element={<Details />}/>
       <Route path="/cart" element={<Cart />}/>
       <Route path="/new" element={<New />}/>
-      <Route path="/Edit/:id" element={<Edit />}/>
+      <Route path="/edit/:id" element={<Edit />}/>
       <Route path="/orders" element={<Orders />}/>
     </Routes>
   )

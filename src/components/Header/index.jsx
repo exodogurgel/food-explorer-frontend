@@ -8,7 +8,7 @@ import logo from '../../assets/logo.svg';
 import receipt from '../../assets/receipt.svg';
 
 
-export function Header() {
+export function Header({search}) {
   const [menuIsVisible, setMenuIsVisible] = useState(false)
 
   const { user, signOut } = useAuth();
@@ -34,6 +34,7 @@ export function Header() {
           <input 
             type="text"
             placeholder="Busque pelas opções de pratos"  
+            onChange={e => {search(e.target.value)}}
           />
           </Search>
 

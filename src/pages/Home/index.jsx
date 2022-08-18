@@ -1,17 +1,31 @@
+import { useEffect, useState } from 'react';
+import { api } from '../../services/api';
+
 import { Container, Content, Slogan } from './styles';
 import { Header } from '../../components/Header';
 import { Section } from '../../components/Section';
-import coverPhoto from '../../assets/cover-photo.png';
 import { Card } from '../../components/Card';
 import { Footer } from '../../components/Footer';
 
+import coverPhoto from '../../assets/cover-photo.png';
 import plate1 from '../../assets/plate-1.png';
 
 export function Home() {
+  const [dishes, setDishes] = useState([])
+  const [search, setSearch] = useState("")
+
+  useEffect(() => {
+    async function fetchDishes() {
+      const response = await api.get(`/dishes?title=${search}`);
+      setDishes(response.data);
+    }
+
+    fetchDishes();
+  }, [search])
 
   return (
       <Container>
-        <Header />
+        <Header search={setSearch}/>
         <Content>
           <Slogan>
             <img src={coverPhoto} alt="cover photo" />
@@ -21,103 +35,36 @@ export function Home() {
             </div>
           </Slogan>
           <Section title="Pratos principais">
-            <Card data={{
-              id: 1,
-              title: "Salada Ravanello",
-              image: plate1,
-              description: "Rabanettes, folhas verdes e molho agridoce salpicados com gergelim",
-              price: "49,90"
-            }}/>
-
-            <Card data={{
-              id: 1,
-              title: "Salada Ravanello",
-              image: plate1,
-              description: "Rabanettes, folhas verdes e molho agridoce salpicados com gergelim",
-              price: "49,90"
-            }}/>
-
-            <Card data={{
-              id: 1,
-              title: "Salada Ravanello",
-              image: plate1,
-              description: "Rabanettes, folhas verdes e molho agridoce salpicados com gergelim",
-              price: "49,90"
-            }}/>
-
-            <Card data={{
-              id: 1,
-              title: "Salada Ravanello",
-              image: plate1,
-              description: "Rabanettes, folhas verdes e molho agridoce salpicados com gergelim",
-              price: "49,90"
-            }}/>
-
-            <Card data={{
-              id: 1,
-              title: "Salada Ravanello",
-              image: plate1,
-              description: "Rabanettes, folhas verdes e molho agridoce salpicados com gergelim",
-              price: "49,90"
-            }}/>
-
-            <Card data={{
-              id: 1,
-              title: "Salada Ravanello",
-              image: plate1,
-              description: "Rabanettes, folhas verdes e molho agridoce salpicados com gergelim",
-              price: "49,90"
-            }}/>
+            {
+              dishes.filter(dish => dish.category == "pratos principais").map(dish => (
+                <Card
+                  key={String(dish.id)}
+                  data={dish} 
+                />
+              ))
+            }
           </Section>
 
           <Section title="Sobremesas">
-            <Card data={{
-              id: 1,
-              title: "Salada Ravanello",
-              image: plate1,
-              description: "Rabanettes, folhas verdes e molho agridoce salpicados com gergelim",
-              price: "49,90"
-            }}/>
+            {
+              dishes.filter(dish => dish.category == "sobremesas").map(dish => (
+                <Card
+                  key={String(dish.id)}
+                  data={dish} 
+                />
+              ))
+            }
+          </Section>
 
-            <Card data={{
-              id: 1,
-              title: "Salada Ravanello",
-              image: plate1,
-              description: "Rabanettes, folhas verdes e molho agridoce salpicados com gergelim",
-              price: "49,90"
-            }}/>
-
-            <Card data={{
-              id: 1,
-              title: "Salada Ravanello",
-              image: plate1,
-              description: "Rabanettes, folhas verdes e molho agridoce salpicados com gergelim",
-              price: "49,90"
-            }}/>
-
-            <Card data={{
-              id: 1,
-              title: "Salada Ravanello",
-              image: plate1,
-              description: "Rabanettes, folhas verdes e molho agridoce salpicados com gergelim",
-              price: "49,90"
-            }}/>
-
-            <Card data={{
-              id: 1,
-              title: "Salada Ravanello",
-              image: plate1,
-              description: "Rabanettes, folhas verdes e molho agridoce salpicados com gergelim",
-              price: "49,90"
-            }}/>
-
-            <Card data={{
-              id: 1,
-              title: "Salada Ravanello",
-              image: plate1,
-              description: "Rabanettes, folhas verdes e molho agridoce salpicados com gergelim",
-              price: "49,90"
-            }}/>
+          <Section title="Bebidas">
+            {
+              dishes.filter(dish => dish.category == "bebidas").map(dish => (
+                <Card
+                  key={String(dish.id)}
+                  data={dish} 
+                />
+              ))
+            }
           </Section>
         </Content>
         <Footer />
