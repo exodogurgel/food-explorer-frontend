@@ -67,7 +67,7 @@ export function SignUp() {
           title="Senha" 
           placeholder="No mínimo 6 caracteres"
           onChange={e => setPassword(e.target.value)}
-          minlength="6"
+          minLength="6"
           required
         />
 

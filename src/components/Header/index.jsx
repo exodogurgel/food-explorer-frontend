@@ -1,7 +1,8 @@
-import { Container, Content, Logo, Nav, Favorites, Search, Button, Logout } from './styles';
-import { FiSearch, FiLogOut, FiMenu, FiX } from 'react-icons/fi';
 import { useState } from 'react';
+import { useAuth } from '../../hooks/auth';
 
+import { FiSearch, FiLogOut, FiMenu, FiX } from 'react-icons/fi';
+import { Container, Content, Logo, Nav, Favorites, NewDish, Search, Button, Logout } from './styles';
 
 import logo from '../../assets/logo.svg';
 import receipt from '../../assets/receipt.svg';
@@ -9,6 +10,8 @@ import receipt from '../../assets/receipt.svg';
 
 export function Header() {
   const [menuIsVisible, setMenuIsVisible] = useState(false)
+
+  const { user, signOut } = useAuth();
 
   return (
     <Container>
@@ -19,7 +22,12 @@ export function Header() {
         </Logo>
           
         <Nav isVisible={menuIsVisible}>
-          <Favorites href="#">Meus favoritos</Favorites>
+          {
+            user.isAdmin ? 
+            <NewDish to="/new">+ Adicionar novo prato</NewDish>
+            :
+            <Favorites href="#">Meus favoritos</Favorites>
+          }
 
           <Search>
           {<FiSearch size={20}/>}
@@ -34,7 +42,7 @@ export function Header() {
           Meu pedido <span>(0)</span>
           </Button>
 
-          <Logout href="#">
+          <Logout to="/" onClick={signOut}>
           <FiLogOut />
           </Logout>
         </Nav>
