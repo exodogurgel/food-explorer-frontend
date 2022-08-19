@@ -69,11 +69,23 @@ export function Card({data, ...rest}) {
     navigate(`/edit/${id}`);
   }
 
+  async function handleRemoveDish() {
+    const confirm = window.confirm("Deseja realmente remover esse prato?");
+
+    if (confirm) {
+      console.log(data.id)
+      await api.delete(`/dishes/${data.id}`);
+      location.reload();
+    }
+  } 
+
   return (
     <Container {...rest}>
       {
         user.isAdmin ? 
-        <button>
+        <button
+          onClick={handleRemoveDish}
+        >
           <FaTrashAlt size={25}/>
         </button>
         :
