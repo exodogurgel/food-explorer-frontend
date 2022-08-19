@@ -8,7 +8,7 @@ import logo from '../../assets/logo.svg';
 import receipt from '../../assets/receipt.svg';
 
 
-export function Header({search}) {
+export function Header({search, functionButton}) {
   const [menuIsVisible, setMenuIsVisible] = useState(false)
 
   const { user, signOut } = useAuth();
@@ -26,7 +26,7 @@ export function Header({search}) {
             user.isAdmin ? 
             <NewDish to="/new">+ Adicionar novo prato</NewDish>
             :
-            <Favorites href="#">Meus favoritos</Favorites>
+            <Favorites type='button' onClick={functionButton}>Meus favoritos</Favorites>
           }
 
           <Search>

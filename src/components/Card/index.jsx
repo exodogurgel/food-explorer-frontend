@@ -1,26 +1,47 @@
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/auth';
+import { useFavorite } from '../../hooks/favorite';
 import { api } from '../../services/api';
 
 import { FiMinus, FiPlus } from 'react-icons/fi';
-import { FaAngleRight, FaRegHeart, FaHeart, FaTrashAlt} from 'react-icons/fa'
+import { FaAngleRight, FaTrashAlt} from 'react-icons/fa'
 
 import { Container } from './styles';
 import { Button } from '../Button';
 
+import heart from '../../assets/heart.svg';
+import heartFill from '../../assets/heart-fill.svg';
+
 
 export function Card({data, ...rest}) {
-  const [isFavorite, setIsFavorite] = useState(false);
   const [quantity, setQuantity] = useState(1);
-
-  const imageURL = `${api.defaults.baseURL}/files/${data.image}`;
-
+  const { favorites, setFavorites } = useFavorite()
+  
+  let favoritesStorage = JSON.parse(localStorage.getItem("@foodexplorer:favorites")) || [];
+  const isFavorite = favorites.some((dish) => dish.title === data.title) || favoritesStorage.some((dish) => dish.title === data.title)
+  
   const { user } = useAuth();
   const navigate = useNavigate()
 
-  function handleIsFavorite() {
-    setIsFavorite(!isFavorite);
+  const imageURL = `${api.defaults.baseURL}/files/${data.image}`;
+
+
+  function saveToLocalStorage(item) {
+    localStorage.setItem("@foodexplorer:favorites", JSON.stringify(item));
+  }
+
+  const addDishToFavorite = () => {
+    setFavorites([...favorites, data])
+
+    favoritesStorage.push(data)
+    saveToLocalStorage(favoritesStorage)
+  }
+
+  const removeDishFromFavorite = () => {
+    setFavorites(favoritesStorage.filter((dish) => dish.id !== data.id))
+
+    saveToLocalStorage(favorites)
   }
 
   function handleAddQuantity() {
@@ -47,9 +68,9 @@ export function Card({data, ...rest}) {
   function handleEditDish(id) {
     navigate(`/edit/${id}`);
   }
-   
+
   return (
-    <Container isFavorite={isFavorite} {...rest}>
+    <Container {...rest}>
       {
         user.isAdmin ? 
         <button>
@@ -57,18 +78,21 @@ export function Card({data, ...rest}) {
         </button>
         :
         <button
-          onClick={handleIsFavorite}
+          type='button'
+          onClick={() => isFavorite ? removeDishFromFavorite() : addDishToFavorite()}
         > 
-          {isFavorite ? <FaHeart size={30}/> : <FaRegHeart size={30}/>} 
+          <img src={isFavorite ?  heartFill : heart} alt="heart" />  
         </button>
       }
       
       <div>
         <img src={imageURL} alt={data.title} />
       </div>
+
       <a type='button' onClick={user.isAdmin ? () => handleEditDish(data.id) : () => handleDetails(data.id)}>
         <h3>{data.title} <FaAngleRight /></h3>
       </a>
+
       <p>{data.description}</p>
       <strong>R$ {data.price}</strong>
       <div>

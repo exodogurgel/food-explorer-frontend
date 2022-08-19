@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { api } from '../../services/api';
+import { useFavorite } from '../../hooks/favorite';
 
 import { Container, Content, Slogan } from './styles';
 import { Header } from '../../components/Header';
@@ -8,11 +9,18 @@ import { Card } from '../../components/Card';
 import { Footer } from '../../components/Footer';
 
 import coverPhoto from '../../assets/cover-photo.png';
-import plate1 from '../../assets/plate-1.png';
 
 export function Home() {
   const [dishes, setDishes] = useState([])
   const [search, setSearch] = useState("")
+
+  const { favorites } = useFavorite();
+  
+  const favoritesStorage = JSON.parse(localStorage.getItem("@foodexplorer:favorites"));
+  
+  function handleFavorites() {
+    setDishes(favoritesStorage ? favoritesStorage : favorites);
+  }
 
   useEffect(() => {
     async function fetchDishes() {
@@ -21,11 +29,11 @@ export function Home() {
     }
 
     fetchDishes();
-  }, [search])
+  }, [search, favoritesStorage ? favoritesStorage.length === 0 : false])
 
   return (
       <Container>
-        <Header search={setSearch}/>
+        <Header search={setSearch} functionButton={handleFavorites}/>
         <Content>
           <Slogan>
             <img src={coverPhoto} alt="cover photo" />

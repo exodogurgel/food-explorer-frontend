@@ -7,13 +7,16 @@ import GlobalStyles from './styles/global';
 import theme from './styles/theme';
 
 import { Routes } from './routes/index';
+import { FavoriteProvider } from './hooks/favorite';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles />
         <AuthProvider>
-          <Routes />
+          <FavoriteProvider>
+            <Routes />
+          </FavoriteProvider>
         </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>

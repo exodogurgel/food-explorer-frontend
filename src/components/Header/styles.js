@@ -97,8 +97,11 @@ export const Logo = styled(Link)`
   color: ${({ theme }) => theme.COLORS.WHITE};
 `
 
-export const Favorites = styled.a`
+export const Favorites = styled.button`
   color: ${({ theme }) => theme.COLORS.GRAY_100};
+  background: none;
+  border: none;
+  font-size: 1.6rem;
 `
 export const NewDish = styled(Link)`
   background-color: ${({ theme }) => theme.COLORS.RED};
