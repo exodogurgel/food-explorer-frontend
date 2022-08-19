@@ -15,6 +15,7 @@ export const TextareaInput= styled.textarea`
 
   resize: none;
   font-family: 'Roboto', sans-serif;
+  font-weight: 400;
   font-size: 1.6rem;
   color: ${({ theme }) => theme.COLORS.WHITE};
 
