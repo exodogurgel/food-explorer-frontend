@@ -6,6 +6,7 @@ export const Container = styled.div`
 `
 export const Content = styled.div`
   max-width: 136.8rem;
+  flex: 1;
   
   @media (min-width: 768px) {
     padding-inline: 12.3rem;

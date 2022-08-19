@@ -1,16 +1,21 @@
+import { useEffect, useState } from 'react';
+import { api } from '../../services/api';
+import { Link, useParams } from 'react-router-dom';
+
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
 import { Button } from '../../components/Button';
 import { Ingredient } from '../../components/Ingredient';
 import { Container, Main, Ingredients, ButtonBack, Content, Info } from './styles';
-import plate from '../../assets/plate-1.png';
-import { useState } from 'react';
 
 import { FiMinus, FiPlus, FiChevronLeft } from 'react-icons/fi';
 
 
 export function Details() {
   const [quantity, setQuantity] = useState(1);
+  const [data, setData] = useState(null);
+  const params = useParams();
+  const imageURL = data && `${api.defaults.baseURL}/files/${data.image}`;
 
   function handleAddQuantity() {
     const isGreater10 = quantity >= 9;
@@ -29,47 +34,59 @@ export function Details() {
     setQuantity(quantity - 1);
   }
 
+  useEffect(() => {
+    async function fetchDish() {
+      const response = await api.get(`/dishes/${params.id}`)
+      setData(response.data);
+    }
+
+    fetchDish();
+  }, [])
+
   return (
     <Container>
       <Header />
 
       <Content>
         <ButtonBack>
-          <a href="#"> <FiChevronLeft size={30}/>Voltar</a>
+          <Link to="/"> <FiChevronLeft size={30}/>Voltar</Link>
         </ButtonBack>
-        <Main>
-          <div>
-            <img src={plate} alt="" />
-          </div>
-          <div>
-            <h1>Salada Ravanello</h1>
-            <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim.</p>
-            <Ingredients>
-              {
-                ["Alface", "tomate", "rabanete", "pão naan"].map(ingredient => (
-                  <Ingredient key={ingredient} ingredient={ingredient} />
-                ))
-              }
-            </Ingredients>
-            <Info>
-              <strong>R$ 25,97</strong>
-              <button
-                onClick={handleRemoveQuantity} 
-                className="btn"><FiMinus size={25}/>
-              </button>
-          
-              <span>0{quantity}</span>
-          
-              <button
-                onClick={handleAddQuantity}
-                className="btn"><FiPlus size={25}/>
-              </button>
-              <div>
-                <Button title="incluir"/>
-              </div>
-            </Info>
-          </div>
-        </Main>
+        {
+          data &&
+          <Main>
+            <div>
+              <img src={imageURL} alt={`imagem de ${data.title}`} />
+            </div>
+            <div>
+              <h1>{data.title}</h1>
+              <p>{data.description}</p>
+              <Ingredients>
+                {
+                  data.ingredients.map(ingredient => (
+                    <Ingredient key={String(ingredient.id)} ingredient={ingredient.name} />
+                  ))
+                }
+              </Ingredients>
+              <Info>
+                <strong>R$ {data.price}</strong>
+                <button
+                  onClick={handleRemoveQuantity} 
+                  className="btn"><FiMinus size={25}/>
+                </button>
+            
+                <span>0{quantity}</span>
+            
+                <button
+                  onClick={handleAddQuantity}
+                  className="btn"><FiPlus size={25}/>
+                </button>
+                <div>
+                  <Button title="incluir"/>
+                </div>
+              </Info>
+            </div>
+          </Main>
+        }
       </Content>
       <Footer />
     </Container>

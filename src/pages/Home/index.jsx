@@ -42,38 +42,48 @@ export function Home() {
               <p>Sinta o cuidado do preparo com ingredientes selecionados</p>
             </div>
           </Slogan>
-          <Section title="Pratos principais">
-            {
-              dishes.filter(dish => dish.category == "pratos principais").map(dish => (
-                <Card
-                  key={String(dish.id)}
-                  data={dish} 
-                />
-              ))
-            }
-          </Section>
+          {
+            dishes.filter(dish => dish.category == "pratos principais").length > 0 &&
+            <Section title="Pratos principais">
+              {
+                dishes.filter(dish => dish.category == "pratos principais").map(dish => (
+                  <Card
+                    key={String(dish.id)}
+                    data={dish} 
+                  />
+                ))
+              }
+            </Section>
+          }
 
-          <Section title="Sobremesas">
-            {
-              dishes.filter(dish => dish.category == "sobremesas").map(dish => (
-                <Card
-                  key={String(dish.id)}
-                  data={dish} 
-                />
-              ))
-            }
-          </Section>
+          {
+            dishes.filter(dish => dish.category == "sobremesas").length > 0 &&  
+            <Section title="Sobremesas">
+              {
+                dishes.filter(dish => dish.category == "sobremesas").map(dish => (
+                  <Card
+                    key={String(dish.id)}
+                    data={dish} 
+                  />
+                ))
+              }
+            </Section>
+          }  
 
-          <Section title="Bebidas">
-            {
-              dishes.filter(dish => dish.category == "bebidas").map(dish => (
-                <Card
-                  key={String(dish.id)}
-                  data={dish} 
-                />
-              ))
-            }
-          </Section>
+          { 
+            dishes.filter(dish => dish.category == "bebidas").length > 0 &&
+            <Section title="Bebidas">
+              { 
+                dishes.filter(dish => dish.category == "bebidas").map(dish => (
+                  <Card
+                    key={String(dish.id)}
+                    data={dish} 
+                  />
+                ))
+              }
+            </Section>
+          }
+          
         </Content>
         <Footer />
 
