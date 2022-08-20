@@ -17,36 +17,16 @@ import heartFill from '../../assets/heart-fill.svg';
 
 export function Card({data, ...rest}) {
   const [quantity, setQuantity] = useState(1);
-  const { favorites, setFavorites } = useFavorite()
-  
-  let favoritesStorage = JSON.parse(localStorage.getItem("@foodexplorer:favorites")) || [];
-  const isFavorite = favorites.some((dish) => dish.title === data.title) || favoritesStorage.some((dish) => dish.title === data.title)
-  
-  const { user } = useAuth();
 
-  const { cart, handleAddDishToCart } = useCart();
-  console.log(cart)
+  const { user } = useAuth();
+  const { favorites, addDishToFavorite, removeDishFromFavorite } = useFavorite()
+  const { handleAddDishToCart } = useCart();
+  
+  const isFavorite = favorites.some((dish) => dish.title === data.title)
 
   const navigate = useNavigate()
 
   const imageURL = `${api.defaults.baseURL}/files/${data.image}`;
-
-  function saveToLocalStorage(item) {
-    localStorage.setItem("@foodexplorer:favorites", JSON.stringify(item));
-  }
-
-  const addDishToFavorite = () => {
-    setFavorites([...favorites, data])
-
-    favoritesStorage.push(data)
-    saveToLocalStorage(favoritesStorage)
-  }
-
-  const removeDishFromFavorite = () => {
-    setFavorites(favoritesStorage.filter((dish) => dish.id !== data.id))
-
-    saveToLocalStorage(favorites)
-  }
 
   function handleAddQuantity() {
     const isGreater10 = quantity >= 9;
@@ -95,7 +75,7 @@ export function Card({data, ...rest}) {
         :
         <button
           type='button'
-          onClick={() => isFavorite ? removeDishFromFavorite() : addDishToFavorite()}
+          onClick={() => isFavorite ? removeDishFromFavorite(data) : addDishToFavorite(data)}
         > 
           <img src={isFavorite ?  heartFill : heart} alt="heart" />  
         </button>

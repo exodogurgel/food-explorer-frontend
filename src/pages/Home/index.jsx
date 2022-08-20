@@ -16,10 +16,8 @@ export function Home() {
 
   const { favorites } = useFavorite();
   
-  const favoritesStorage = JSON.parse(localStorage.getItem("@foodexplorer:favorites"));
-  
   function handleFavorites() {
-    setDishes(favoritesStorage ? favoritesStorage : favorites);
+    setDishes(favorites);
   }
 
   useEffect(() => {
@@ -29,7 +27,7 @@ export function Home() {
     }
 
     fetchDishes();
-  }, [search, favoritesStorage ? favoritesStorage.length === 0 : false])
+  }, [search, favorites.length === 0])
 
   return (
       <Container>
