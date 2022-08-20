@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Container, Content, Payment, SectionCredit, Accept } from './styles';
 import { FaRegCheckCircle } from 'react-icons/fa'
+import { useCart } from '../../hooks/cart';
 
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
@@ -9,7 +10,6 @@ import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 
 import receipt from '../../assets/receipt.svg';
-import plate from '../../assets/plate-1.png';
 import imagePix from '../../assets/pix.svg';
 import imageCreditCad from '../../assets/credit-card.svg';
 import imageQrCode from '../../assets/qr-code.png';
@@ -17,6 +17,8 @@ import imageQrCode from '../../assets/qr-code.png';
 export function Cart() {
   const [isPix, setIsPix] = useState(true);
   const [paymentAccept, setPaymentAccept] = useState(false);
+
+  const { cart, total } = useCart();
 
   function handlePaymentPix() {
     setIsPix(true);
@@ -37,37 +39,15 @@ export function Cart() {
         <div>
           <h3>Meu pedido</h3>
           <div className='section-order'>
-            <OrderItem data={{
-              id: 1,
-              image: plate,
-              quantity: "2",
-              name: "Salada Radish",
-              price: "25,97"
-            }} />
-            <OrderItem data={{
-              id: 1,
-              image: plate,
-              quantity: "2",
-              name: "Salada Radish",
-              price: "25,97"
-            }} />
-            <OrderItem data={{
-              id: 1,
-              image: plate,
-              quantity: "2",
-              name: "Salada Radish",
-              price: "25,97"
-            }} />
-            <OrderItem data={{
-              id: 1,
-              image: plate,
-              quantity: "2",
-              name: "Salada Radish",
-              price: "25,97"
-            }} />
+            {
+              cart && 
+              cart.map(item => (
+                <OrderItem key={String(item.id)} data={item}/>
+              ))
+            }
           </div>
           <div className="result">
-            <p>Total: R$ <span>103,88</span></p>
+            <p>Total: R$ <span>{total}</span></p>
           </div>
         </div>
         <Payment ButtonBackgroundIsActive={isPix}>

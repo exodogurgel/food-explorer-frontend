@@ -8,15 +8,18 @@ import theme from './styles/theme';
 
 import { Routes } from './routes/index';
 import { FavoriteProvider } from './hooks/favorite';
+import { CartProvider } from './hooks/cart';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles />
         <AuthProvider>
-          <FavoriteProvider>
-            <Routes />
-          </FavoriteProvider>
+        <CartProvider>
+        <FavoriteProvider>
+          <Routes />
+        </FavoriteProvider>
+        </CartProvider>
         </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>

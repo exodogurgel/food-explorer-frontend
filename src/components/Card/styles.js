@@ -68,6 +68,9 @@ export const Container = styled.div`
     gap: 1.7rem;
     width: 22rem;
 
+    position: relative;
+    z-index: 10;
+
     span {
       font-size: 2rem;
       font-weight: 700;
