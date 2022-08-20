@@ -151,9 +151,10 @@ export const Search = styled.div`
   }
 `
 
-export const Button = styled(Link)`
+export const Button = styled.button`
   width: 100%;
   height: 5.6rem;
+  border: none;
   border-radius: 0.5rem;
 
   display: flex;
@@ -164,6 +165,10 @@ export const Button = styled(Link)`
   background-color: ${({ theme }) => theme.COLORS.RED};
   color: ${({ theme }) => theme.COLORS.WHITE};
   font-size: 1.4rem;
+
+  &:disabled {
+    opacity: 0.5;
+  }
 
   @media (min-width: 768px) {
     width: 21.6rem;

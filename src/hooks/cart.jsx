@@ -7,17 +7,28 @@ function CartProvider({ children }) {
 
 
   function handleAddDishToCart(data, quantity, image){
-    const { id, title, price} = data
-    const priceFormatted = quantity * Number(price.replace(',', '.'))
-    
-    const order = {id, title, price: priceFormatted, image, quantity}
-    
-    const orderExists = cart.some((ord) => ord.title === order.title)
-    if (orderExists) {
-      return alert("Esse item já está no carrinho")
+
+    try {
+      const { id, title, price} = data
+      const priceFormatted = quantity * Number(price.replace(',', '.'))
+      
+      const order = {id, title, price: priceFormatted, image, quantity}
+      
+      const orderExists = cart.some((ord) => ord.title === order.title)
+      if (orderExists) {
+        return alert("Esse item já está no carrinho")
+      }
+  
+      setCart(prevState => [...prevState, order])
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.message)
+      } else {
+        alert("Não foi possível adicionar o item ao carrinho")
+      }
     }
 
-    setCart(prevState => [...prevState, order])
+    alert("Item adicionado ao carrinho")
     
   }
 

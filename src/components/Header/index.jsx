@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from '../../hooks/auth';
 import { useCart } from '../../hooks/cart';
+import { useNavigate } from 'react-router-dom';
 
 import { FiSearch, FiLogOut, FiMenu, FiX } from 'react-icons/fi';
 import { Container, Content, Logo, Nav, Favorites, NewDish, Search, Button, Logout } from './styles';
@@ -14,6 +15,13 @@ export function Header({search, functionButton}) {
 
   const { user, signOut } = useAuth();
   const { cart } = useCart();
+  const navigate = useNavigate();
+
+  const isCartIsEmpty = cart.length === 0;
+
+  function handleGoToCart() {
+    navigate("/cart")
+  }
 
   return (
     <Container>
@@ -40,8 +48,12 @@ export function Header({search, functionButton}) {
           />
           </Search>
 
-          <Button to="/cart">
-          <img src={receipt} alt="receipt" />
+          <Button
+            type='button'
+            onClick={handleGoToCart}
+            disabled={isCartIsEmpty}>
+
+          <img src={receipt} alt="receipt"/>
           Meu pedido <span>({cart.length})</span>
           </Button>
 

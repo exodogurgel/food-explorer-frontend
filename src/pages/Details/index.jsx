@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { api } from '../../services/api';
 import { Link, useParams } from 'react-router-dom';
+import { useCart } from '../../hooks/cart';
 
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
@@ -9,12 +10,16 @@ import { Ingredient } from '../../components/Ingredient';
 import { Container, Main, Ingredients, ButtonBack, Content, Info } from './styles';
 
 import { FiMinus, FiPlus, FiChevronLeft } from 'react-icons/fi';
+import receipt from '../../assets/receipt.svg';
 
 
 export function Details() {
   const [quantity, setQuantity] = useState(1);
   const [data, setData] = useState(null);
   const params = useParams();
+  const { handleAddDishToCart } = useCart();
+  console.log(data)
+
   const imageURL = data && `${api.defaults.baseURL}/files/${data.image}`;
 
   function handleAddQuantity() {
@@ -81,7 +86,11 @@ export function Details() {
                   className="btn"><FiPlus size={25}/>
                 </button>
                 <div>
-                  <Button title="incluir"/>
+                  <Button 
+                    title="incluir"
+                    image={receipt}
+                    onClick={() => handleAddDishToCart(data, quantity, imageURL)}
+                  />
                 </div>
               </Info>
             </div>
