@@ -3,7 +3,7 @@ import { useCart } from '../../hooks/cart';
 
 export function OrderItem({data}) {
 
-  const { handleRemoveDishFromCart } = useCart();
+  const { handleRemoveDishFromCart, paymentAccept } = useCart();
   
   return (
     <Container>
@@ -19,6 +19,7 @@ export function OrderItem({data}) {
         <button
           type='button'
           onClick={() => handleRemoveDishFromCart(data.id)}
+          disabled={paymentAccept}
         >Excluir</button>
       </Content>
     </Container>

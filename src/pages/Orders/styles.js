@@ -80,7 +80,7 @@ export const SelectWrapper = styled.div`
     background: red;
   }
 
-  .preparando span {
+  .preparando {
     background: yellow;
   }
 

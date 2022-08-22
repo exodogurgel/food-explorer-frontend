@@ -20,7 +20,7 @@ export function Card({data, ...rest}) {
 
   const { user } = useAuth();
   const { favorites, addDishToFavorite, removeDishFromFavorite } = useFavorite()
-  const { handleAddDishToCart } = useCart();
+  const { handleAddDishToCart, paymentAccept } = useCart();
   
   const isFavorite = favorites.some((dish) => dish.title === data.title)
 
@@ -91,23 +91,30 @@ export function Card({data, ...rest}) {
 
       <p>{data.description}</p>
       <strong>R$ {data.price}</strong>
-      <div>
-        <button
-          onClick={handleRemoveQuantity} 
-          className="btn"><FiMinus size={25}/>
-        </button>
-        
-        <span>0{quantity}</span>
-        
-        <button
-          onClick={handleAddQuantity}
-          className="btn"><FiPlus size={25}/>
-        </button>
-        <Button
-          title="incluir"
-          onClick={() => handleAddDishToCart(data, quantity, imageURL)}
-        />
-      </div>
+      {
+        user.isAdmin ?
+        <div></div>
+        :
+        <div>
+          <button
+            onClick={handleRemoveQuantity} 
+            className="btn"><FiMinus size={25}/>
+          </button>
+          
+          <span>0{quantity}</span>
+          
+          <button
+            onClick={handleAddQuantity}
+            className="btn"><FiPlus size={25}/>
+          </button>
+          <Button
+            title="incluir"
+            onClick={() => handleAddDishToCart(data, quantity, imageURL)}
+            disabled={paymentAccept}
+          />
+        </div>
+      }
+      
       
     </Container>
    )

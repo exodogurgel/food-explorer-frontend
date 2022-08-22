@@ -16,7 +16,10 @@ export function Home() {
 
   const { favorites } = useFavorite();
   
-  function handleFavorites() {
+  function handleFavorites(favor) {
+    if (favor.length === 0) {
+      return
+    }
     setDishes(favorites);
   }
 
@@ -31,7 +34,7 @@ export function Home() {
 
   return (
       <Container>
-        <Header search={setSearch} functionButton={handleFavorites}/>
+        <Header search={setSearch} functionButton={() => handleFavorites(favorites)}/>
         <Content>
           <Slogan>
             <img src={coverPhoto} alt="cover photo" />

@@ -42,5 +42,9 @@ export const Content = styled.div`
     color: #da505d;
     font-size: 1.2rem;
 
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
   }
 `
