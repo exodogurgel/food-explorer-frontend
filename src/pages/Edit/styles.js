@@ -124,12 +124,13 @@ export const SectionIngredients = styled.div`
   gap: 0.8rem;
   color: ${({ theme }) => theme.COLORS.GRAY_200};
 
-  margin-bottom: 4rem;
+  margin-bottom: 8rem;
 
   > div {
     display: flex;
-    gap: 2rem;
-    max-height: 4.8rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+    max-height: max-content;
     padding: 0.8rem;
 
     border: 1px solid ${({ theme }) => theme.COLORS.WHITE};
@@ -138,5 +139,10 @@ export const SectionIngredients = styled.div`
 
   @media (min-width: 768px) {
     margin-bottom: 0;
+
+    > div {
+      max-height: 4.8rem;
+      gap: 2rem;
+    }
   }
 `

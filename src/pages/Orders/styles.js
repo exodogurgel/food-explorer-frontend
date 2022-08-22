@@ -39,7 +39,13 @@ export const Table = styled.table`
 
   th, td {
     border: 2px solid #192227;
-    padding-inline: 2.4rem;
+    padding-inline: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    th, td {
+      padding-inline: 2.4rem;
+    }
   }
 `
 
@@ -89,7 +95,7 @@ export const SelectWrapper = styled.div`
   }
 
   select {
-    width: 17.5rem;
+    width: 100%;
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
     padding: 1.3rem 1.6rem 1.3rem 3.2rem;
     color: white;
@@ -100,9 +106,7 @@ export const SelectWrapper = styled.div`
     appearance: none;
     -webkit-appearance: none;
 
-    background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 10L12 14L16 10' stroke='%239C98A6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
-    background-repeat: no-repeat;
-    background-position: right 1rem top 50%;
+
 
     option span {
       width: 0.8rem;
@@ -122,7 +126,12 @@ export const SelectWrapper = styled.div`
     .green {
       background-color: green;
     }
+
+    @media (min-width: 768px) {
+      background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 10L12 14L16 10' stroke='%239C98A6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+      background-repeat: no-repeat;
+      background-position: right 1rem top 50%;
+      width: 17.5rem;
+    }
   }
-
-
 `

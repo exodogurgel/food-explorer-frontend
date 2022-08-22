@@ -55,7 +55,7 @@ export const Main = styled.main`
   align-items: center;
 
   div:nth-child(1) {
-    max-width: 39rem;
+    max-width: 30rem;
     border-radius: 50%;
 
     img {
@@ -85,7 +85,11 @@ export const Main = styled.main`
     }
 
     div:nth-child(5) {
-      width: 10rem;
+      width: 5rem;
+      
+      img {
+        display: none;
+      }
     }
   }
 
@@ -95,6 +99,11 @@ export const Main = styled.main`
     justify-content: flex-start;
     align-items: center;
     gap: 4rem;
+
+    > div:nth-child(1) {
+      max-width: 39rem;
+      border-radius: 50%;
+    }
 
     > div:nth-child(2) {
       max-width: 60rem;
@@ -106,6 +115,13 @@ export const Main = styled.main`
 
       p {
         text-align: left;
+      }
+
+      div:nth-child(5) {
+        width: 10rem;
+        img {
+          display: block;
+        }
       }
     }
   }

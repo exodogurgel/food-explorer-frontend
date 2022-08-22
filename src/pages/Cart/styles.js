@@ -85,7 +85,7 @@ export const Payment = styled.div`
     }
 
     .option-payment {
-      padding: 4rem 9rem;
+      padding: 4rem 4rem;
 
       display: flex;
       flex-direction: column;
@@ -96,6 +96,10 @@ export const Payment = styled.div`
         max-width: 100%;
         margin-inline: auto;
         padding-bottom: 2rem
+      }
+
+      @media (min-width: 768px) {
+        padding: 4rem 9rem;
       }
     }
   }

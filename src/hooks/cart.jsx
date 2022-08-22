@@ -9,7 +9,6 @@ function CartProvider({ children }) {
   const [cart, setCart] = useState( JSON.parse(localStorage.getItem(`@foodexplorer:cart-${user.id}`)) || [])
   const [paymentAccept, setPaymentAccept] = useState(JSON.parse(localStorage.getItem(`paymentAccept:${user.id}`)) || false)
   const [orders, setOrders] = useState([])
-  console.log(user)
 
   function handleAddDishToCart(data, quantity, image) {
 
