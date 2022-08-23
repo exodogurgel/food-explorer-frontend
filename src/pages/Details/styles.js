@@ -55,7 +55,7 @@ export const Main = styled.main`
   align-items: center;
 
   div:nth-child(1) {
-    max-width: 30rem;
+    max-width: 25rem;
     border-radius: 50%;
 
     img {
@@ -74,13 +74,13 @@ export const Main = styled.main`
     h1 {
       margin-top: 2rem;
       margin-bottom: 1.8rem;
-      font-size: 4rem;
+      font-size: clamp(2.4rem, 1rem + 3vw, 4rem);
       font-weight: 700;
     }
 
     p {
       text-align: center;
-      font-size: 2.4rem;
+      font-size: clamp(1.8rem, .4rem + 3vw, 2.4rem);
       color: ${({ theme }) => theme.COLORS.GRAY_200};
     }
 
