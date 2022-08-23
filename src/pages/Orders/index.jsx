@@ -24,6 +24,7 @@ export function Orders() {
     }
 
     await api.put("/carts", cart);
+    navigate("/")
     navigate("/orders")
   }
 
