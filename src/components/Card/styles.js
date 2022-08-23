@@ -51,6 +51,7 @@ export const Container = styled.div`
   }
 
   > p {
+    text-align: center;
     font-size: 1.4rem;
     padding-inline: 4rem;
     color: ${({ theme }) => theme.COLORS.GRAY_200};
