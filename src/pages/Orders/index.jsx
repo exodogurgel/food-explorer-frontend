@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { api } from '../../services/api';
 import { useAuth } from '../../hooks/auth';
 import { useCart } from '../../hooks/cart';
@@ -9,7 +9,7 @@ import { Footer } from '../../components/Footer';
 
 export function Orders() {
   const { user } = useAuth()
-  const { orders, setOrders} = useCart();
+  const { orders, setOrders } = useCart();
 
   async function handleOrderStatus(order, event) {
     let statusSelect = event.target.value

@@ -71,7 +71,7 @@ function CartProvider({ children }) {
       setPaymentAccept,
       orders,
       setOrders,
-      handleResetCart
+      handleResetCart,
     }}>
       { children }
     </CartContext.Provider>

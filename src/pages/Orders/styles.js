@@ -106,27 +106,6 @@ export const SelectWrapper = styled.div`
     appearance: none;
     -webkit-appearance: none;
 
-
-
-    option span {
-      width: 0.8rem;
-      height: 0.8rem;
-      border-radius: 5rem;
-      background-color: red;
-    }
-
-    span.red {
-      background-color: red;
-    }
-
-    .yellow {
-      background-color: yellow;
-    }
-
-    .green {
-      background-color: green;
-    }
-
     @media (min-width: 768px) {
       background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 10L12 14L16 10' stroke='%239C98A6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
       background-repeat: no-repeat;
