@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Container, Content, Payment, SectionCredit, Accept } from './styles';
 import { FaRegCheckCircle } from 'react-icons/fa'
+import { RiRestaurantLine } from 'react-icons/ri'
 import { useCart } from '../../hooks/cart';
 import { useNavigate } from 'react-router-dom';
 
@@ -122,8 +123,8 @@ export function Cart() {
                 isPix ? 
                   paymentAccept ? 
                   <Accept>
-                    <FaRegCheckCircle />
-                    <p>Pagamento aprovado! </p>
+                    {cartUser && cartUser.status == 'entregue' ? <RiRestaurantLine /> : <FaRegCheckCircle />}    
+                    {cartUser && cartUser.status == 'entregue' ? '' : <p>Pagamento aprovado! </p>}              
                     {
                       cartUser && 
                       <span>{status(cartUser)}</span>
@@ -145,8 +146,8 @@ export function Cart() {
                   :
                     paymentAccept ?
                     <Accept>
-                      <FaRegCheckCircle />
-                      <p>Pagamento aprovado! </p>
+                      {cartUser && cartUser.status == 'entregue' ? <RiRestaurantLine /> : <FaRegCheckCircle />}    
+                      {cartUser && cartUser.status == 'entregue' ? '' : <p>Pagamento aprovado! </p>}  
                       {
                         cartUser && 
                         <span>{status(cartUser)}</span>
