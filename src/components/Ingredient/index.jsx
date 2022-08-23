@@ -78,7 +78,7 @@ function fetchImageIngredient(name) {
     return result = lemon
   } else if (ingredient == "whiskey") {
     return result = whiskey
-  } else if (ingredient == "maça") {
+  } else if (ingredient == "maçã") {
     return result = apple
   } else {
     return result = damascus
