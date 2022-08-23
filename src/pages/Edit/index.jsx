@@ -21,6 +21,8 @@ export function Edit() {
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState("");
 
+  const [loading, setLoading] = useState(false);
+
   const { user } = useAuth();
   const navigate = useNavigate();
   const params = useParams();
@@ -63,6 +65,7 @@ export function Edit() {
       return alert("Adicione pelo menos um ingrediente")
     }
 
+    setLoading(true)
     const formData = new FormData();
     formData.append("image", imageFile);
     formData.append("title", title);
@@ -76,7 +79,8 @@ export function Edit() {
 
     await api.put(`/dishes/${params.id}`, formData);
     alert("Prato atualizado com sucesso");
-    navigate("/")
+    navigate("/");
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -182,8 +186,9 @@ export function Edit() {
             <button
               type="button"
               onClick={handleUpdateDish}
+              disabled={loading}
             >
-              Adicionar pedido
+              {loading ? "Atualizando pedido" : "Atualizar pedido"}
             </button>
           </Form>
 

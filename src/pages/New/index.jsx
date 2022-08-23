@@ -21,6 +21,8 @@ export function New() {
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState("");
 
+  const [loading, setLoading] = useState(false);
+
   const { user } = useAuth();
   const navigate = useNavigate();
 
@@ -62,6 +64,7 @@ export function New() {
       return alert("Adicione pelo menos um ingrediente")
     }
 
+    setLoading(true);
     const formData = new FormData();
     formData.append("image", imageFile);
     formData.append("title", title);
@@ -76,6 +79,8 @@ export function New() {
     await api.post("/dishes", formData);
     alert("Prato cadastrado com sucesso");
     navigate("/")
+
+    setLoading(false);
   }
 
   return (
@@ -165,8 +170,9 @@ export function New() {
             <button
               type="button"
               onClick={handleNewDish}
+              disabled={loading}
             >
-              Adicionar pedido
+              {loading ? "Adicionando pedido" : "Adicionar pedido"}
             </button>
           </Form>
 

@@ -93,6 +93,11 @@ export const Form = styled.form`
     color: ${({ theme }) => theme.COLORS.WHITE};
 
     align-self: flex-end;
+    
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
 
     @media (min-width: 768px) {
       width: 35.7rem;

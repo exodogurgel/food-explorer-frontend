@@ -6,9 +6,11 @@ export const AuthContext = createContext({});
 
 function AuthProvider({ children }) {
   const [data, setData] = useState({});
+  const [loading, setLoading] = useState(false)
   
   async function signIn({email, password}) {
     try {
+      setLoading(true);
       const response = await api.post("/sessions", {email, password});
       const { user, token } = response.data;
 
@@ -18,12 +20,15 @@ function AuthProvider({ children }) {
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       setData({ user, token })
 
+      setLoading(false);
+
     } catch (error) {
       if (error.response) {
         alert(error.response.data.message);
       } else {
         alert("Não foi possível entrar")
       }
+      setLoading(false)
     }
   }
 
@@ -51,7 +56,9 @@ function AuthProvider({ children }) {
   return (
     <AuthContext.Provider value={{ 
       signIn,
-      signOut, 
+      signOut,
+      loading,
+      setLoading,
       user: data.user 
     }}>
       { children }

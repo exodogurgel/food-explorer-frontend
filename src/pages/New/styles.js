@@ -94,6 +94,11 @@ export const Form = styled.form`
 
     align-self: flex-end;
 
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
     @media (min-width: 768px) {
       width: 35.7rem;
     }

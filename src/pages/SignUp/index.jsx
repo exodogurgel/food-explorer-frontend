@@ -10,6 +10,7 @@ export function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -18,10 +19,18 @@ export function SignUp() {
       return alert("Preencha todos os campos");
     }
 
+    if (password.length < 6) {
+      return alert("A senha deve conter no mínimo 6 caracteres!")
+    }
+
+    setLoading(true)
+
     api.post("/users", {name, email, password})
       .then(() => {
         alert("Usuário cadastrado com sucesso!");
         navigate("/");
+
+        setLoading(false)
       })
       .catch(error => {
         if(error.response) {
@@ -29,6 +38,8 @@ export function SignUp() {
         } else {
           alert("Não foi possível cadastrar")
         }
+
+        setLoading(false)
       })
   }
 
@@ -72,8 +83,9 @@ export function SignUp() {
         />
 
         <Button
-          title="Criar conta"
+          title={loading ? "Cadastrando" : "Criar conta"}
           onClick={handleSignUp}
+          disabled={loading}
         />
 
         <Link to="/">Já tenho uma conta</Link>
