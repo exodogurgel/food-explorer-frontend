@@ -3,8 +3,6 @@ import { api } from '../../services/api';
 import { useAuth } from '../../hooks/auth';
 import { useCart } from '../../hooks/cart';
 
-import { useNavigate } from 'react-router-dom';
-
 import { Container, Content, Table, Thead, Tbody, SelectWrapper } from './styles';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
@@ -12,8 +10,6 @@ import { Footer } from '../../components/Footer';
 export function Orders() {
   const { user } = useAuth()
   const { orders, setOrders} = useCart();
-
-  const navigate = useNavigate();
 
   async function handleOrderStatus(order, event) {
     let statusSelect = event.target.value
@@ -24,8 +20,7 @@ export function Orders() {
     }
 
     await api.put("/carts", cart);
-    navigate("/")
-    navigate("/orders")
+    location.reload();
   }
 
   function formatDate(date) {
