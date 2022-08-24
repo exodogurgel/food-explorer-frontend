@@ -75,6 +75,8 @@ opcionais
 </p>
 
 ### Mobile
+
+<p>
 <img alt="foodexplorer" title="#foodexplorer" src=".github/1.png"  width="24%">
 <img alt="foodexplorer" title="#foodexplorer" src=".github/2.png"  width="24%">
 <img alt="foodexplorer" title="#foodexplorer" src=".github/3.png"  width="24%">
@@ -83,7 +85,7 @@ opcionais
 <img alt="foodexplorer" title="#foodexplorer" src=".github/6.png"  width="24%">
 <img alt="foodexplorer" title="#foodexplorer" src=".github/7.png"  width="24%">
 <img alt="foodexplorer" title="#foodexplorer" src=".github/8.png"  width="24%">
-
+</p>
 ---
 
 
