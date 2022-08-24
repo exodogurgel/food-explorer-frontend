@@ -47,7 +47,7 @@ export const Content = styled.main`
 `
 
 export const Payment = styled.div`
-  max-width: 53rem;
+  max-width: 35rem;
 
   > div {
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -102,6 +102,10 @@ export const Payment = styled.div`
         padding: 4rem 9rem;
       }
     }
+  }
+
+  @media (min-width: 768px) {
+    max-width: 53rem;
   }
   
 `
