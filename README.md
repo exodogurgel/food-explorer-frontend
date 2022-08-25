@@ -86,19 +86,51 @@ opcionais
 <img alt="foodexplorer" title="#foodexplorer" src=".github/7.png"  width="24%">
 <img alt="foodexplorer" title="#foodexplorer" src=".github/8.png"  width="24%">
 </p>
----
 
+### Deploy
+[Food Explorer](https://foodexplorer-01.netlify.app/)
+
+---
 
 ## 🚀 How it works
 
-This project is divided into three parts:
+This project is divided into two parts:
 1. Backend (food-explorer-backend folder) 
 2. Frontend (food-explorer-frontend folder)
+
+💡 The Frontend needs the Backend to be running to work.
 
 ### Pre-requisites
 Before you begin, you will need to have the following tools installed on your machine: [Git] (https://git-scm.com), [Node.js] (https://nodejs.org/en/). In addition, it is good to have an editor to work with the code like [VSCode] (https://code.visualstudio.com/)
 
-#### 🎲 Running the web application (Frontend)
+#### 🎲 Running the Server (Backend)
+
+```bash
+# Clone this repository
+$ git clone git@github.com:exodogurgel/food-explorer-backend.git
+
+# Access the project folder in your terminal
+$ cd food-explorer-backend
+
+# Install the dependencies
+$ npm install
+
+# run the migration and seed
+$ npm migrate
+$ npm seed
+
+# Run the application in development mode
+$ npm run dev
+
+# Admin login
+$ email: admin@email.com
+$ password: 090807
+
+# The Server will start at port: 3333 - go to http://localhost:3333
+```
+---
+
+#### 🧭 Running the web application (Frontend)
 
 ```bash
 # Clone this repository
@@ -121,9 +153,9 @@ $ npm run dev
 
 The following tools were used in the construction of the project:
 - [React](https://reactjs.org)
-- HTML
-- Styled components
-- JavaScript
+- [HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
+- [Styled components](https://styled-components.com/)
+- [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
 
 ---
 
